@@ -2,14 +2,14 @@ package io.example.eventloop;
 
 import org.junit.jupiter.api.Test;
 
-class EventLoopTest {
+class EventLoopWithContextSwitchingTest {
 
     @Test
-    void testeExecucaoEventLoopExemplo() throws InterruptedException {
+    void testEventLoopExecution() throws InterruptedException {
 
         System.out.println(Thread.currentThread().getName() + " Thread main name");
 
-        EventLoop eventLoop = new EventLoop();
+        EventLoopWithContextSwitching eventLoop = new EventLoopWithContextSwitching();
         eventLoop.start();
 
         Publisher<String> publisher = new Publisher<>(eventLoop);

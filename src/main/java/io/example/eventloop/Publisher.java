@@ -3,10 +3,11 @@ package io.example.eventloop;
 import java.util.function.Consumer;
 
 public class Publisher<T> {
-    private Subscription<T> subscription;
-    private final EventLoop eventLoop;
 
-    public Publisher(EventLoop eventLoop) {
+    private Subscription<T> subscription;
+    private final EventLoopWithContextSwitching eventLoop;
+
+    public Publisher(EventLoopWithContextSwitching eventLoop) {
         this.eventLoop = eventLoop;
     }
 
