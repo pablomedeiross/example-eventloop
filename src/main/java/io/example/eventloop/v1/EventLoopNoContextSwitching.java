@@ -1,5 +1,6 @@
-package io.example.eventloop;
+package io.example.eventloop.v1;
 
+import io.example.eventloop.EventLoop;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -7,7 +8,7 @@ import java.util.Queue;
  This is a simple example of how is an event loop that execute requests and tasks in the same thread.
  In this example we have no context switching.
  */
-public class EventLoopNoContextSwitching {
+public class EventLoopNoContextSwitching implements EventLoop {
 
     private final Queue<Runnable> taskQueue = new ArrayDeque<>();
 
@@ -22,5 +23,10 @@ public class EventLoopNoContextSwitching {
                 task.run();
             }
         }
+    }
+
+    @Override
+    public void stop() {
+
     }
 }

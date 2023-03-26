@@ -1,13 +1,14 @@
-package io.example.eventloop;
+package io.example.eventloop.v1;
 
+import io.example.eventloop.EventLoop;
 import java.util.function.Consumer;
 
 public class Publisher<T> {
 
     private Subscription<T> subscription;
-    private final EventLoopWithContextSwitching eventLoop;
+    private final EventLoop eventLoop;
 
-    public Publisher(EventLoopWithContextSwitching eventLoop) {
+    public Publisher(EventLoop eventLoop) {
         this.eventLoop = eventLoop;
     }
 

@@ -1,5 +1,6 @@
-package io.example.eventloop;
+package io.example.eventloop.v1;
 
+import io.example.eventloop.EventLoop;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executor;
@@ -10,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  This is a simple example of how is an event loop that delegates the tasks execution to another thread.
  In this example we have more context switching than processing all requests and tasks in the same thread.
  */
-public class EventLoopWithContextSwitching {
+public class EventLoopWithFewContextSwitching implements EventLoop {
 
     private final Queue<Runnable> taskQueue = new ConcurrentLinkedQueue<>();
     private final Executor executor = Executors.newSingleThreadExecutor();
@@ -34,11 +35,11 @@ public class EventLoopWithContextSwitching {
         executor.execute(this::run);
     }
 
-    public void stop() {
-        this.isRunning.set(false);
-    }
-
     public void start() {
         this.isRunning.set(true);
+    }
+
+    public void stop() {
+        this.isRunning.set(false);
     }
 }
